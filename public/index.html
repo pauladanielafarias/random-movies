@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Random Movies</title>
+    <meta charset="utf-8">
+    <!--viewport // "user-scalable=no" prevents zooming-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--AFTER LAST DEBUG DELETE THIS META-website reloaded from the web server with every page view. This leads to longer loading times, but on the other hand, it can be very useful, for example, if a web page's content is constantly being updated.
+           <meta http-equiv="cache-control" content="no-cache"/>-->
+
+    <!--meta to make the status bar translucent in the phone / full-screen browsing-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!--Adds An iPhone And iPad Icon for Your Website-->
+    <link rel="apple-touch-icon" href="./style/images/logo transparente violeta.png" />
+    <!--Adds An Android Icon for Your Website-->
+    <link rel="apple-touch-icon-precomposed" href="./style/images/logo transparente violeta.png" />
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="TITLE">
+    <meta name="theme-color" content="#673ab7">
+    <link rel="icon" type="image/png" href="./style/images/logo transparente violeta.png" sizes="16x16 32x32" />
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-title" content="TITLE">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#673ab7">
+
+    <!--w3.css stylesheet, w3pro.css stylesheet and color libraries-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2018.css">
+
+    <!-- color theme w3.css -->
+    <link href="./style/w3-theme.css" rel="stylesheet" type="text/css" />
+
+    <!--font awesome v5.8.1 (icons)-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!--my css- created in another file named main.css-->
+    <link href="style/main.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body class="w3-theme">
+    <div id="app"> <!--1st div-->
+
+        <div class="w3-row">
+
+            <div class="w3-half">
+                <!--- Hamburguer menu --->
+                <i onclick="open_sidebar()" class="fa fa-bars w3-xlarge w3-button w3-margin w3-hover-opacity"></i>
+            </div>
+
+            <div class="w3-half">
+                <div class="w3-margin">
+                    <a class="w3-button w3-theme w3-right">SP</a>
+                    <a class="w3-button w3-theme w3-right">EN</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!-------- Makes the overlay -------->
+        <div class="w3-overlay w3-animate-opacity" onclick="close_sidebar()" style="cursor:pointer" id="myOverlay">
+        </div>
+
+
+        <!-------- Header -------->
+        <header class="w3-padding w3-margin">
+            <!--- Page --->
+            <div class="w3-center">
+                <h4 class="w3-animate-bottom">¿WHAT MOVIE DO I WATCH?</h4>
+                <h1 class="w3-xxxlarge w3-animate-opacity">RANDOM MOVIES</h1>
+                <div class="w3-padding-32">
+                    <button id="shuffle-btn" class="w3-btn w3-xlarge w3-hover-opacity w3-round" onclick="open_modal()">
+                        SHUFFLE
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-------- Sidebar -------->
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme-l1 " style="display:none; z-index:5;"
+            id="mySidebar">
+
+            <div class="w3-row">
+                <div class="">
+                    <button class="w3-button w3-hover-none w3-right" onclick="close_sidebar()"><i
+                            class="fas fa-window-close w3-xlarge"></i></button>
+                </div>
+            </div>
+
+            <div class="w3-row">
+                <div class="">
+                    <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                    <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    <a href="#" class="w3-bar-item w3-button">Link 4</a>
+                </div>
+            </div>
+
+            <div class="w3-row" id="logo-sidebar">
+                <img src="./style/images/logo transparente violeta.png" alt="Logo Random Movies"
+                    class="w3-margin w3-center" style="max-width: 70%;">
+            </div>
+        </div>
+
+
+        <!------- Modal ------->
+        <div id="modal" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+
+                <header class="w3-container theme-blue">
+                    <span onclick="close_modal()" class="w3-button w3-display-topright">×</span>
+                    <h4>You can watch...</h4>
+                    <h1 id="title" class="">Title</h1>
+
+                    <div class="w3-row">
+                        <div class="w3-col-half">
+                            <h4 id="rating" class="w3-right">Rating</h4>
+                        </div>
+
+                        <div class="w3-col-half">
+                            <h6 id="genre" class=""> Genre</h6>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="w3-container w3-padding theme-purple">
+                    <div class="w3-row">
+                        <div>
+                            <ul>
+                                <li id="epoca" class="">Decade</li>
+                                <li id="year" class="">Year</li>
+                                <li id="apto" class="">Certificate</li>
+                                <li id="netflix" class="">Is it in Netflix</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="w3-container theme-salmon">
+                    <p> Go to IMDB webpage for more information about the movie</p>
+                    <p id="link"></p>
+
+                    <button class="w3-button w3-margin w3-right w3-large hover-theme-purple w3-border"
+                        onclick="open_modal()">Shuffle Again</button>
+                </footer>
+
+            </div>
+        </div>
+
+
+        <!------ Page Footer ------>
+        <footer id="page-footer" class="w3-container w3-padding w3-center w3-theme-l1 w3-medium">
+            <p class="w3-medium">Random Movies &copy; 2020 - Paula Farias Developer</p>
+            <a href="https://www.linkedin.com/in/paulafarias/" target="blank" class="w3-padding"><i
+                    class="fab fa-linkedin w3-hover-opacity" style="font-size:x-large; color:azure;"></i></a>
+            <a href="https://github.com/pauladanielafarias" target="blank" class="w3-padding"><i
+                    class="fab fa-github w3-hover-opacity" style="font-size:x-large; color:azure;"></i></a> <br>
+        </footer>
+
+
+    </div> <!--last div-->
+
+
+
+    <!-- ---------- SCRIPTS ---------- -->
+    <!-- Vue.js development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!--popper-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <!--Bootstrap-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!--W3.js-->
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+    <!--Sweet alert-->
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!--movies.js script-->
+    <script src="./scripts/movies.js"></script>
+
+    <!--main.js script-->
+    <script src="./scripts/main.js"></script>
+
+
+
+</body>
+
+</html>
